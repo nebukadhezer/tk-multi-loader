@@ -170,11 +170,11 @@ class AddFileToScene(tank.Hook):
         
         This will attempt to merge the loaded file with the scene.
         """
-        from Py3dsMax import mxs
+        import MaxPlus
         if not os.path.exists(file_path):
             self.parent.log_error("The file %s does not exist." % file_path)
         else:
-            mxs.importFile(file_path)
+            MaxPlus.FileManager.Import(file_path)
         
     def add_file_to_photoshop(self, file_path, shotgun_data):
         """
