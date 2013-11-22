@@ -63,7 +63,7 @@ class EntityBrowserWidget(browser_widget.BrowserWidget):
             filters.extend(entity_filters)
 
             # and limit results to current is show only current is checked
-            if self.__show_only_current:
+            if self.__show_only_current and curEntInExtEnt:
                 filters.append(["id", "is", self._app.context.entity["id"]])
 
             # and project of course
