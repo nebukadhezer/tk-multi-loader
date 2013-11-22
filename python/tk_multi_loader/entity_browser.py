@@ -37,11 +37,16 @@ class EntityBrowserWidget(browser_widget.BrowserWidget):
         self._types_to_load = entity_cfg.keys()
                     
         sg_data = []
-
+        
+        if not self._app.context.entity["type"] in self._types_to_load:
+            curEntInExtEnt = False
+        else:
+            curEntInExtEnt = True
+        
         # load all entities
         for et in self._types_to_load:
             # only load the context entity type if show only current is checked
-            if self.__show_only_current and (et != self._app.context.entity["type"]):
+            if self.__show_only_current and (et != self._app.context.entity["type"]) and curEntInExtEnt:
                 continue
 
             item = {}
